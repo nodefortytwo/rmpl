@@ -1,0 +1,62 @@
+html, body{
+    background-color:#111;
+    margin-top:10px;
+    color:#fff
+}
+
+a, a:visited, a:active{
+    color:white;
+    text-decoration:none;
+}
+
+h1,h2,h3{
+    font-family:'Play', sans-serif;
+    color:#fff;
+}
+
+.box h2{
+    font-size:12px;   
+}
+
+#banner{
+    border-bottom:1px solid #191919;
+}
+
+#user_box{
+    text-align:right;
+}
+
+.playing{
+    background-color:#444;
+}
+
+.homepage_box{
+    line-height:250px;
+    text-align:center;
+}
+
+.media_list{
+     border-top:1px solid #191919
+}
+
+.media_list li{
+    padding:10px 0 10px 32px;
+    border-bottom:1px solid #191919;
+    margin:0;
+    list-style:none;
+}
+
+.media_list li:hover{
+    background-color:#191919;
+}
+
+#fourohfour{
+    text-align:center;
+}
+
+#footer{
+    border-top:1px solid #191919;
+    padding-top:10px;
+    color:#191919;
+    text-align: center;
+}

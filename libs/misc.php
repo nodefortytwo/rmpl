@@ -1,9 +1,11 @@
 <?php
 function debug($var){
-	var_dump($var);
-	die();
+	print '<pre>' . print_r($var, true) . '</pre>';
+	
 }
-
+function beginsWith($str, $sub) {
+    return (strncmp($str, $sub, strlen($sub)) == 0);
+}
 function redirect($url, $code='301'){
 	
 	switch ($code){

@@ -4,9 +4,10 @@ class User {
 	private $facebook;
 	public $uid, $display_name, $created, $updated, $deleted;
 	
-	public function __construct($facebook) {
-		$this->facebook = $facebook;
-		$this->uid = $facebook->getUser();
+	public function __construct() {
+        global $facebook;
+     	$this->facebook = $facebook;
+     	$this->uid = $facebook->getUser();
 		
 		if ($this->uid){
 			$this->populate_user();
@@ -45,7 +46,7 @@ class User {
 		
 	}
 	
-	function update_user(){
+	private function update_user(){
 	
 		$fb_response = $this->facebook->api('/me');
 		$this->display_name = $fb_response['name'];
@@ -71,6 +72,21 @@ class User {
 		redirect($url);
 	}
 	
+    public function theme_user_box(){
+        $output = '';
+        //check if anon
+        if ($this->uid == 0){
+            $title = 'Login';
+            $url = $this->facebook->getLoginUrl();
+            $output .= '<a href="' . $url . '">' . 'Login with Facebook' . '</a>';
+        }else{
+            $title = 'Welcome ' . $this->display_name;
+        }
+        
+        return '<h2>' . $title . '</h2>' . $output;
+        
+    }
+    
 }
 
 

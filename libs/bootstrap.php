@@ -3,13 +3,18 @@ require('facebook/facebook.php');
 require('settings.php');
 require('misc.php');
 require('db.php');
-require('users.php');
-require('media.php');
 
+$menu = array();
 foreach (glob("libs/modules/*.php") as $filename)
 {
-	print($filename);
     require($filename);
+    $module = str_replace('.php', '', $filename);
+    $module = str_replace('libs/modules/', '', $module);
+    if(function_exists($module.'_menu')){
+        $data = call_user_func($module.'_menu');
+        $menu = array_merge($data, $menu);
+    }
+    
 }
 
 // This request is either a clean URL, or 'index.php', or nonsense.
@@ -26,7 +31,19 @@ if ($path == basename($_SERVER['PHP_SELF'])) {
   $path = '';
 }
 
+if ($path == ''){$path = 'home';}
+$ajax = false;
+if (beginsWith($path, 'ajax')){
+    $ajax = true;
+}
 
+$split = explode('~', $path);
+$path = rtrim($split[0], "/");
+$args = array();
+if (!empty($split[1])){
+    $split[1] = trim($split[1], "/");
+    $args = explode('/', $split[1]);
+}
 
 //init the db connection
 $db = new Database();
@@ -34,11 +51,19 @@ $db = new Database();
 //Create the user object
 $user = new User($facebook);
 
-if ($path == 'home'){
-	$module = 'homepage';
-	call_user_func($module.'_init');
+if (!$ajax){include "theme/header.tpl.php";}
+
+if (array_key_exists($path, $menu)){
+    if(function_exists($menu[$path]['callback'])){
+        call_user_func_array($menu[$path]['callback'], $args);
+    }
 }else{
-	print('some other page');
+    if (!$ajax){
+        print '<div class="grid_16" id="fourohfour"><h1>404! - Page Not Found</h1></div>';
+    }else{
+        print json_encode(array('error'=>'404'));
+    }
 }
 
+if (!$ajax){include "theme/footer.tpl.php";}
 
