@@ -29,6 +29,7 @@
   <link rel="stylesheet" type="text/css" href="/<?php print SITE_ROOT;?>/css/960/text.css" media="screen" />
   <link rel="stylesheet" type="text/css" href="/<?php print SITE_ROOT;?>/css/960/grid.css" media="screen" />
   <link rel="stylesheet" href="/<?php print SITE_ROOT;?>/css/core.css">
+  <link rel="stylesheet" href="../css/sc-player-standard.css" type="text/css">
   <!-- end CSS-->
 
   <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->

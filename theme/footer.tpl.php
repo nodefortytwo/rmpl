@@ -12,11 +12,15 @@
   <script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.2.min.js"><\/script>')</script>
   <script src="//ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-
-
+    
+  <!-- Soundcloud Stuff -->
+  <script src="http://connect.soundcloud.com/sdk.js" type="text/JavaScript"></script>
+  
+  
   <!-- scripts concatenated and minified via ant build script-->
   <script defer src="/<?php print SITE_ROOT;?>/js/plugins.js"></script>
   <script defer src="/<?php print SITE_ROOT;?>/js/script.js"></script>
+  <script defer src="/<?php print SITE_ROOT;?>/js/soundcloud.player.api.js"></script>
   <!-- end scripts-->
     
 	

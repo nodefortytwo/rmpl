@@ -30,22 +30,37 @@ function playlist_view($id = null){
     
     $playlist = new Playlist($id);
     print ('<script>var playlist_id='.$playlist->plid.';</script>');
-    print ('<div class="grid_16"><h1>' . $playlist->title . '</h1></div>');
+    print ('<div class="grid_16">
+        <div class="grid_8 alpha">
+            <h1>' . $playlist->title . '</h1>
+        </div>
+        <div class="grid_8 omega">
+            <a href="javascript:void(0);" onclick="rmpl_next();">Next</a>
+            '.form_add_media($id).'
+        </div>
+    </div>');
     print ('<div class="grid_16 alpha omega">');
-        print ('<div class="grid_8">');
+        print ('<div class="grid_6">');
             
             print ('<ul class="grid_16 alpha omega media_list">');
             foreach ($playlist->media as $media){
-                print ('<li id="media-'.$media->mid.'">' . $media->title . '</li>');    
+                print ('<li id="media-'.$media->mid.'" class="'.$media->provider_name.'">' . $media->title . '<a class="delete" href="javascript:void(0);" onclick="rmpl_delete('.$media->mid.');">Remove</a></li>');    
             }
             print ('</ul>');
         print ('</div>');
-        print ('<div class="grid_8">');
-            print ('<a href="javascript:void(0);" onclick="rmpl_next();">Next</a>');
-            print (form_add_media($id));
+        print ('<div class="grid_10">');
+            
             print ('<div id="play_window"></div>');
         print ('</div>');
     print ('</div>');
+    print ('<div class="grid_16" id="controls">
+    <ul>
+        <li><a href="javascript:void(0);" onclick="rmpl_prev();">Prev</a></li>
+        <li><a href="javascript:void(0);" onclick="rmpl_play();">Play</a></li>
+        <li><a href="javascript:void(0);" onclick="rmpl_pause();">Pause</a></li>
+        <li><a href="javascript:void(0);" onclick="rmpl_next();">Next</a></li>
+    </ul>
+    </div>');
 }
 
 function playlist_list(){

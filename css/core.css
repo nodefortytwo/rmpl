@@ -50,6 +50,52 @@ h1,h2,h3{
     background-color:#191919;
 }
 
+.media_list li:hover .delete{
+	display:inline;
+}
+
+.media_list .delete{
+	float:right;
+	padding-right:10px;
+	display:none;
+}
+
+#controls{
+    position:fixed;
+    bottom:10px;
+    left:0;
+    background-color: #191919;
+}
+
+#controls ul{
+    list-style:none;
+    display:block;
+    float:left;
+    margin:0 0 0 20px;
+    padding:0;
+}
+
+#controls li{
+    list-style:none;
+    display:block;
+    float:left;
+    margin:0;
+    padding:0;
+}
+
+#controls li a{
+    display:block;
+    float:left;
+    line-height:50px;
+    padding:0 20px;
+    border-right:1px dashed #444;  
+    border-left:1px dashed #444;  
+}
+#controls li a:hover{
+  background-color:#444;
+
+}
+
 #fourohfour{
     text-align:center;
 }

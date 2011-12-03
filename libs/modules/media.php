@@ -88,6 +88,9 @@ class Media {
                 $id = explode('/', $id);
                 $this->id = $id[0];
             break;
+            case 'Soundcloud':
+                $this->id = $this->url;
+            break;
         }
         
         
